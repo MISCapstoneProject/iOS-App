@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>NSCameraUsageDescription</key>
+    <string>此應用程式需要使用相機來進行擴增實境體驗。</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>此應用程式需要使用位置資訊來顯示方位導向。</string>
+</dict>
+</plist>

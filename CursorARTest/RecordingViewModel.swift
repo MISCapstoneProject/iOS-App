@@ -12,6 +12,7 @@ class RecordingViewModel: NSObject, ObservableObject, AVAudioRecorderDelegate {
     @Published var isRecording = false
     @Published var isUploading = false
     @Published var mode: Mode = .transcribe
+    @Published var sessionID: String? = nil
 
     private var recorder: AVAudioRecorder?
     private var tempFileURL: URL?
@@ -89,7 +90,11 @@ class RecordingViewModel: NSObject, ObservableObject, AVAudioRecorderDelegate {
     private func startStreaming() {
         outputs = ["🎙️ 開始建立音訊串流..."]
 
-        let url = URL(string: Config.API.stream)!
+        var wsURLString = Config.API.stream
+        if let sessionID = sessionID, !sessionID.isEmpty {
+            wsURLString += "?session=\(sessionID)"
+        }
+        let url = URL(string: wsURLString)!
         webSocketTask = URLSession.shared.webSocketTask(with: url)
         webSocketTask?.resume()
 

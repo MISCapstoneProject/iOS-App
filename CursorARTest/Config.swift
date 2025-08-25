@@ -8,7 +8,7 @@
 import Foundation
 
 struct Config {
-    static let baseURL = "https://programmer-kept-thumbzilla-ignore.trycloudflare.com"
+    static let baseURL = "https://seminar-earrings-ur-finish.trycloudflare.com"
     
     struct API {
         static let speakers = "\(baseURL)/speakers"

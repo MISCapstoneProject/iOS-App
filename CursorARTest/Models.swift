@@ -24,7 +24,7 @@ struct Speaker: Codable, Identifiable {
 }
 
 // MARK: - Session Model
-struct Session: Codable, Identifiable {
+struct Session: Codable, Identifiable, Hashable {
     var id: String { uuid }
     let uuid: String
     let session_id: String?

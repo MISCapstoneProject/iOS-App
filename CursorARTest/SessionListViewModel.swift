@@ -18,7 +18,6 @@ class SessionListViewModel: ObservableObject {
         isLoading = true
         error = nil
         guard let url = URL(string: Config.API.sessions) else { return }
-        
         URLSession.shared.dataTask(with: url) { data, response, err in
             DispatchQueue.main.async {
                 self.isLoading = false
@@ -34,10 +33,12 @@ class SessionListViewModel: ObservableObject {
                 let sessions = try JSONDecoder().decode([Session].self, from: data)
                 DispatchQueue.main.async {
                     self.sessions = sessions
+                    print("Fetched sessions:", sessions)
                 }
             } catch {
                 DispatchQueue.main.async {
                     self.error = error.localizedDescription
+                    print("Session decode error:", error)
                 }
             }
         }.resume()
@@ -252,4 +253,4 @@ class SessionListViewModel: ObservableObject {
             }
         }.resume()
     }
-} 
+}

@@ -20,7 +20,7 @@ struct SilentModeView: View {
                 Picker("選擇會議", selection: $selectedSession) {
                     Text("").tag(nil as Session?)
                     ForEach(sessionListVM.sessions) { session in
-                        Text(session.title ?? session.session_id ?? "未命名")
+                        Text(session.title ?? session.id ?? "未命名")
                             .tag(session as Session?)
                     }
                 }
@@ -35,7 +35,7 @@ struct SilentModeView: View {
             Button(action: {
                 recordingVM.mode = .stream
                 // 傳入 session_id 給 WebSocket
-                recordingVM.sessionID = selectedSession?.session_id
+                recordingVM.sessionID = selectedSession?.uuid
                 recordingVM.toggleRecording()
             }) {
                 Text(recordingVM.isRecording ? "停止錄音" : "開始錄音")
